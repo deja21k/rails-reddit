@@ -6,3 +6,103 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 41ms (Views: 17.6ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLinks (20170215183950)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170215183950"]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-15 18:40:53 UTC], ["updated_at", 2017-02-15 18:40:53 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2017-02-15 19:41:23 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/railties-5.0.1/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 46ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-02-15 19:41:36 +0100
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 1022ms (Views: 1011.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/links/new" for 127.0.0.1 at 2017-02-15 19:42:07 +0100
+Processing by LinksController#new as HTML
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (107.6ms)
+  Rendered links/new.html.erb within layouts/application (109.0ms)
+Completed 200 OK in 136ms (Views: 131.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/links" for 127.0.0.1 at 2017-02-15 19:42:16 +0100
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vpTppEgwLb7Yu+3GzbYbvH9JlzucnoQy0uF11tgahV7ClpT055c1XkjU9v25BBbXm529cfmmSdwVkUIBMm8TCQ==", "link"=>{"title"=>"oaoa", "url"=>"oaoa.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "oaoa"], ["url", "oaoa.com"], ["created_at", 2017-02-15 18:42:16 UTC], ["updated_at", 2017-02-15 18:42:16 UTC]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/links/1
+Completed 302 Found in 27ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/links/1" for 127.0.0.1 at 2017-02-15 19:42:16 +0100
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 40ms (Views: 24.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-02-15 19:42:33 +0100
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (1.0ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 32ms (Views: 29.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/links/new" for 127.0.0.1 at 2017-02-15 19:42:39 +0100
+Processing by LinksController#new as HTML
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (2.8ms)
+  Rendered links/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/links" for 127.0.0.1 at 2017-02-15 19:42:49 +0100
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nAIIwt1JzT8m+xFpUnUjeoMNarKbNITVLhG4BO8vW8TgAHWScu7V37aUClImxy4RZ9lA+P4MSTvpYY/TBVrNkw==", "link"=>{"title"=>"twittwe", "url"=>"owow.com"}, "commit"=>"Create Link"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "twittwe"], ["url", "owow.com"], ["created_at", 2017-02-15 18:42:49 UTC], ["updated_at", 2017-02-15 18:42:49 UTC]]
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/links/2
+Completed 302 Found in 21ms (ActiveRecord: 17.1ms)
+
+
+Started GET "/links/2" for 127.0.0.1 at 2017-02-15 19:42:49 +0100
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-02-15 19:42:51 +0100
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.2ms)
+
+
